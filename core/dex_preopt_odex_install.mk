@@ -192,7 +192,7 @@ LOCAL_DEX_PREOPT_FLAGS := $(PRODUCT_DEX_PREOPT_DEFAULT_FLAGS)
 endif
 endif
 
-LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=speed
+LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=everything
 
 # PRODUCT_SYSTEM_SERVER_DEBUG_INFO overrides WITH_DEXPREOPT_DEBUG_INFO.
 my_system_server_debug_info := $(PRODUCT_SYSTEM_SERVER_DEBUG_INFO)

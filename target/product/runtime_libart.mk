@@ -75,13 +75,13 @@ ifeq (eng,$(TARGET_BUILD_VARIANT))
         pm.dexopt.boot=extract
 else
     PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-        pm.dexopt.first-boot=quicken \
-        pm.dexopt.boot=verify
+        pm.dexopt.first-boot=everything \
+        pm.dexopt.boot=everything
 endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    pm.dexopt.install=quicken \
-    pm.dexopt.bg-dexopt=speed-profile \
-    pm.dexopt.ab-ota=speed-profile \
+    pm.dexopt.install=everything \
+    pm.dexopt.bg-dexopt=everything \
+    pm.dexopt.ab-ota=everything \
     pm.dexopt.inactive=verify \
-    pm.dexopt.shared=speed
+    pm.dexopt.shared=everything
