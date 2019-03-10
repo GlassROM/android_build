@@ -40,6 +40,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.profilebootimage=true
 
 # Use speed compiler filter since system server doesn't have JIT.
-PRODUCT_DEX_PREOPT_BOOT_FLAGS += --compiler-filter=speed
+PRODUCT_DEX_PREOPT_BOOT_FLAGS += --compiler-filter=everything
 
 PRODUCT_DIST_BOOT_AND_SYSTEM_JARS := true

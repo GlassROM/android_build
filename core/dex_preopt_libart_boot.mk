@@ -63,7 +63,7 @@ my_boot_image_flags := $(COMPILED_CLASSES_FLAGS)
 my_boot_image_flags += --image-classes=$(PRELOADED_CLASSES)
 my_boot_image_flags += $(DIRTY_IMAGE_OBJECTS_FLAGS)
 else
-my_boot_image_flags := --compiler-filter=speed-profile
+my_boot_image_flags := --compiler-filter=everything
 my_boot_image_flags += --profile-file=$(my_out_boot_image_profile_location)
 endif
 

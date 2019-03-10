@@ -31,7 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 
 # Speed profile services and wifi-service to reduce RAM and storage.
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := everything
 
 # Always preopt extracted APKs to prevent extracting out of the APK for gms
 # modules.
@@ -51,7 +51,7 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-im
 # Some notable apps that will be affected by this are gms and chrome.
 # b/65591595.
 PRODUCT_PROPERTY_OVERRIDES += \
-     pm.dexopt.shared=quicken
+     pm.dexopt.shared=everything
 
 # Default heap sizes. Allow up to 256m for large heaps to make sure a single app
 # doesn't take all of the RAM.

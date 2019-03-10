@@ -23,7 +23,7 @@ ifneq (true,$(WITH_DEXPREOPT))
 else # WITH_DEXPREOPT=true
   ifeq (,$(TARGET_BUILD_APPS)) # TARGET_BUILD_APPS empty
     ifndef LOCAL_DEX_PREOPT # LOCAL_DEX_PREOPT undefined
-      ifneq ($(filter $(TARGET_OUT)/%,$(my_module_path)),) # Installed to system.img.
+      #ifneq ($(filter $(TARGET_OUT)/%,$(my_module_path)),) # Installed to system.img.
         ifeq (,$(LOCAL_APK_LIBRARIES)) # LOCAL_APK_LIBRARIES empty
           # If we have product-specific config for this module?
           ifeq (disable,$(DEXPREOPT.$(TARGET_PRODUCT).$(LOCAL_MODULE).CONFIG))
@@ -34,7 +34,7 @@ else # WITH_DEXPREOPT=true
         else # LOCAL_APK_LIBRARIES not empty
           LOCAL_DEX_PREOPT := nostripping
         endif # LOCAL_APK_LIBRARIES not empty
-      endif # Installed to system.img.
+      #endif # Installed to system.img.
     endif # LOCAL_DEX_PREOPT undefined
   endif # TARGET_BUILD_APPS empty
 endif # WITH_DEXPREOPT=true
@@ -254,30 +254,30 @@ endif
 
 my_system_server_compiler_filter := $(PRODUCT_SYSTEM_SERVER_COMPILER_FILTER)
 ifeq (,$(my_system_server_compiler_filter))
-my_system_server_compiler_filter := speed
+my_system_server_compiler_filter := everything
 endif
 
 my_default_compiler_filter := $(PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER)
 ifeq (,$(my_default_compiler_filter))
 # If no default compiler filter is specified, default to 'quicken' to save on storage.
-my_default_compiler_filter := quicken
+my_default_compiler_filter := everything
 endif
 
 ifeq (,$(filter --compiler-filter=%, $(LOCAL_DEX_PREOPT_FLAGS)))
   ifneq (,$(filter $(PRODUCT_SYSTEM_SERVER_JARS),$(LOCAL_MODULE)))
     # Jars of system server, use the product option if it is set, speed otherwise.
-    LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=$(my_system_server_compiler_filter)
+    LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=everything
   else
     ifneq (,$(filter $(PRODUCT_DEXPREOPT_SPEED_APPS) $(PRODUCT_SYSTEM_SERVER_APPS),$(LOCAL_MODULE)))
       # Apps loaded into system server, and apps the product default to being compiled with the
       # 'speed' compiler filter.
-      LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=speed
+      LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=everything
     else
       ifeq (true,$(my_process_profile))
         # For non system server jars, use speed-profile when we have a profile.
-        LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=speed-profile
+        LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=everything
       else
-        LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=$(my_default_compiler_filter)
+        LOCAL_DEX_PREOPT_FLAGS += --compiler-filter=everything
       endif
     endif
   endif
@@ -313,7 +313,7 @@ endif
 # By default, emit debug info.
 my_dexpreopt_debug_info := true
 # If the global setting suppresses mini-debug-info, disable it.
-ifeq (false,$(WITH_DEXPREOPT_DEBUG_INFO))
+ifneq (false,$(WITH_DEXPREOPT_DEBUG_INFO))
   my_dexpreopt_debug_info := false
 endif
 
@@ -340,7 +340,7 @@ endif
 
 # Add dex2oat flag for debug-info/no-debug-info.
 ifeq (true,$(my_dexpreopt_debug_info))
-  LOCAL_DEX_PREOPT_FLAGS += --generate-mini-debug-info
+  LOCAL_DEX_PREOPT_FLAGS += --no-generate-mini-debug-info
 else ifeq (false,$(my_dexpreopt_debug_info))
   LOCAL_DEX_PREOPT_FLAGS += --no-generate-mini-debug-info
 endif
