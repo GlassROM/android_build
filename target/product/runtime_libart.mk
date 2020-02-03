@@ -56,13 +56,13 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.dalvik.vm.native.bridge=0
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    pm.dexopt.first-boot=speed \
-    pm.dexopt.boot=speed \
-    pm.dexopt.install=speed \
-    pm.dexopt.bg-dexopt=speed \
-    pm.dexopt.ab-ota=speed \
+    pm.dexopt.first-boot=everything \
+    pm.dexopt.boot=everything \
+    pm.dexopt.install=everything \
+    pm.dexopt.bg-dexopt=everything \
+    pm.dexopt.ab-ota=everything \
     pm.dexopt.inactive=verify \
-    pm.dexopt.shared=speed
+    pm.dexopt.shared=everything
 
 # Enable resolution of startup const strings.
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
