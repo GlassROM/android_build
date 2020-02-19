@@ -39,8 +39,7 @@ PRODUCT_PACKAGES += \
     StorageManager \
     SystemUI \
     WallpaperCropper \
-    frameworks-base-overlays \
-    TrichromeChrome_rapheneos
+    frameworks-base-overlays
 
 ifeq ($(LINEAGE_BUILD),)
 PRODUCT_PACKAGES += \
