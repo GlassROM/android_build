@@ -40,7 +40,7 @@ PRODUCT_PACKAGES += \
     SystemUI \
     WallpaperCropper \
     frameworks-base-overlays \
-    TrichromeChrome_grapheneos
+    TrichromeChrome_rapheneos
 
 ifeq ($(LINEAGE_BUILD),)
 PRODUCT_PACKAGES += \
