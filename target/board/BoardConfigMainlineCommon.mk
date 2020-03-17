@@ -17,9 +17,6 @@ BOARD_VNDK_VERSION := current
 # Required flag for non-64 bit devices from P.
 TARGET_USES_64_BIT_BINDER := true
 
-# 64 bit mediadrmserver
-TARGET_ENABLE_MEDIADRM_64 := true
-
 # Audio: must using XML format for Treblized devices
 USE_XML_AUDIO_POLICY_CONF := 1
 
