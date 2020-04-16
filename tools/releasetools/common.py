@@ -1108,7 +1108,7 @@ def GetMinSdkVersionInt(apk_name, codename_to_api_level_map):
 
 
 def SignFile(input_name, output_name, key, password, min_api_level=None,
-             codename_to_api_level_map=None, whole_file=True,
+             codename_to_api_level_map=None, whole_file=False,
              extra_signapk_args=None):
   """Sign the input_name zip/jar/apk, producing output_name.  Use the
   given key and password (the latter may be None if the key does not
