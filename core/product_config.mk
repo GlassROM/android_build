@@ -387,6 +387,11 @@ endif
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
 PRODUCT_DEX_PREOPT_BOOT_FLAGS := --compiler-filter=everything
 PRODUCT_DEX_PREOPT_DEFAULT_FLAGS := --compiler-filter=everything
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := everything
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION ?= frameworks/base/config/boot-image-profile.txt
+EXPERIMENTAL_USE_OPENJDK9 := true
 
 define product-overrides-config
 $$(foreach rule,$$(PRODUCT_$(1)_OVERRIDES),\
