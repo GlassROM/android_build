@@ -318,7 +318,7 @@ ifeq (,$(strip $(BUILD_FINGERPRINT)))
   ifeq ($(strip $(HAS_BUILD_NUMBER)),false)
     BF_BUILD_NUMBER := $(BUILD_USERNAME)$$($(DATE_FROM_FILE) +%m%d%H%M)
   else
-    BF_BUILD_NUMBER := $(file - <$(BUILD_NUMBER_FILE))
+    BF_BUILD_NUMBER := $(file <$(BUILD_NUMBER_FILE))
   endif
   BUILD_FINGERPRINT := $(PRODUCT_BRAND)/$(TARGET_PRODUCT)/$(TARGET_DEVICE):$(PLATFORM_VERSION)/$(BUILD_ID)/$(BF_BUILD_NUMBER):$(TARGET_BUILD_VARIANT)/$(BUILD_VERSION_TAGS)
 endif
@@ -327,7 +327,7 @@ BF_BUILD_NUMBER :=
 
 BUILD_FINGERPRINT_FILE := $(PRODUCT_OUT)/build_fingerprint.txt
 ifneq (,$(shell mkdir -p $(PRODUCT_OUT) && echo $(BUILD_FINGERPRINT) >$(BUILD_FINGERPRINT_FILE) && grep " " $(BUILD_FINGERPRINT_FILE)))
-  $(error BUILD_FINGERPRINT cannot contain spaces: "$(file - <$(BUILD_FINGERPRINT_FILE))")
+  $(error BUILD_FINGERPRINT cannot contain spaces: "$(file <$(BUILD_FINGERPRINT_FILE))")
 endif
 BUILD_FINGERPRINT_FROM_FILE := $$(cat $(BUILD_FINGERPRINT_FILE))
 # unset it for safety.
@@ -341,7 +341,7 @@ endif
 
 BUILD_THUMBPRINT_FILE := $(PRODUCT_OUT)/build_thumbprint.txt
 ifneq (,$(shell mkdir -p $(PRODUCT_OUT) && echo $(BUILD_THUMBPRINT) >$(BUILD_THUMBPRINT_FILE) && grep " " $(BUILD_THUMBPRINT_FILE)))
-  $(error BUILD_THUMBPRINT cannot contain spaces: "$(file - <$(BUILD_THUMBPRINT_FILE))")
+  $(error BUILD_THUMBPRINT cannot contain spaces: "$(file <$(BUILD_THUMBPRINT_FILE))")
 endif
 BUILD_THUMBPRINT_FROM_FILE := $$(cat $(BUILD_THUMBPRINT_FILE))
 # unset it for safety.
