@@ -18,7 +18,7 @@
 intermediates := $(call intermediates-dir-for,PACKAGING,owners)
 owners_zip := $(intermediates)/owners.zip
 owners_list := $(OUT_DIR)/.module_paths/OWNERS.list
-owners := $(file <$(owners_list))
+owners := $(file - <$(owners_list))
 $(owners_zip) : PRIVATE_owners := $(subst $(newline),\n,$(owners))
 
 $(owners_zip) : $(owners) $(SOONG_ZIP)

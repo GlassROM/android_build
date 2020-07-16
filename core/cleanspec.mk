@@ -64,6 +64,6 @@ INTERNAL_CLEAN_BUILD_VERSION := 6
 # ************************************************
 
 subdir_cleanspecs := \
-    $(file <$(OUT_DIR)/.module_paths/CleanSpec.mk.list)
+    $(file - <$(OUT_DIR)/.module_paths/CleanSpec.mk.list)
 include $(subdir_cleanspecs)
 subdir_cleanspecs :=

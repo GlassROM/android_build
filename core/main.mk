@@ -82,7 +82,7 @@ ifeq ($(strip $(HAS_BUILD_NUMBER)),false)
   # it will change every time.  Pick a stable value.
   FILE_NAME_TAG := eng.$(BUILD_USERNAME)
 else
-  FILE_NAME_TAG := $(file <$(BUILD_NUMBER_FILE))
+  FILE_NAME_TAG := $(file - <$(BUILD_NUMBER_FILE))
 endif
 .KATI_READONLY := FILE_NAME_TAG
 
@@ -440,7 +440,7 @@ FULL_BUILD := true
 # Include all of the makefiles in the system
 #
 
-subdir_makefiles := $(SOONG_ANDROID_MK) $(file <$(OUT_DIR)/.module_paths/Android.mk.list)
+subdir_makefiles := $(SOONG_ANDROID_MK) $(file - <$(OUT_DIR)/.module_paths/Android.mk.list)
 subdir_makefiles_total := $(words int $(subdir_makefiles) post finish)
 .KATI_READONLY := subdir_makefiles_total
 
