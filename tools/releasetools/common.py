@@ -1096,7 +1096,7 @@ def GetMinSdkVersionInt(apk_name, codename_to_api_level_map):
   """
   version = GetMinSdkVersion(apk_name)
   try:
-    return int(version)
+    return int(29)
   except ValueError:
     # Not a decimal number. Codename?
     if version in codename_to_api_level_map:
